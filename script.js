@@ -1,35 +1,27 @@
 let div = document.querySelector("div");
-let section = document.querySelector("section");
-let nomeUsuario = document.querySelector("input1");
+let nome = document.querySelector("#nome");
+let sexos = document.querySelectorAll(".sexo");
+let email = document.querySelector("#email");
+let emailComf = document.querySelector("#emailComf");
+let senha = document.querySelector("#password");
 let botao = document.querySelector("button");
-let texto = document.querySelector("h2");
 let naoSou = document.querySelector("a");
-let email = document.querySelector("input2")
+let bemVindo = document.querySelector("h2");
 
-if(localStorage.nome){
-    div.style.display = "none";
-    texto.innerHTML=`Seja bem vindo ${localStorage.nome}`;
-    naoSou.innerHTML=`Não sou ${localStorage.nome}`;
+function dadosLocalStorage(){
+    
+    for(sexo of sexos){
+
+if(email.value == emailComf.value){
+    localStorage.setItem("Usuario", JSON.stringify({ Usuario: nome.value, Email: email.value,
+    Senha: senha.value, Sexo: sexo.value}));
+    return;
 }
+     
 else{
-    div.style.display="block";
-    section.style.display="none";
-    function cadastrar(){
-        localStorage.setItem("input1", nomeUsuario.value);
-        localStorage.setItem("input2", email.value);
-        if(localStorage.nome){
-            div.style.display = "none";
-            section.style.display="block"
-            texto.innerHTML=`Seja bem vindo ${localStorage.nome}`;
-            naoSou.innerHTML=`Não sou ${localStorage.nome}`;
+    alert('Confirmação de Email Inválido, Tente Novamente.');
         }
     }
 }
 
-
- function limparStorage(){
-    localStorage.clear();
-}
-
-botao.onclick = cadastrar;
-naoSou.onclick = limparStorage;
+botao.onclick = dadosLocalStorage;

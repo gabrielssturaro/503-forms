@@ -1,3 +1,7 @@
+body{
+    background-color: silver;
+}
+
 #cadastro{
     display: flex;
     flex-direction: column;
